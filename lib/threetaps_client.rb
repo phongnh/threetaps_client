@@ -30,9 +30,11 @@ module ThreetapsClient
     request ANCHOR_URL, :timestamp => timestamp
   end
 
-  def poll(anchor=nil)
-    anchor = self.anchor['anchor'] if anchor.nil?
-    request POLL_URL, :anchor => anchor
+  def poll(*args)
+    criteria = args.extract_options!
+    anchor   = args.first || criteria[:anchor]
+    anchor   = self.anchor['anchor'] if anchor.nil?
+    request POLL_URL, criteria.merge(:anchor => anchor)
   end
 
   def data_sources

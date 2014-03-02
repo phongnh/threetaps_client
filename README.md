@@ -24,7 +24,7 @@ Setup API key:
 
 Use Search API:
 
-    ThreetapsClient.search :source => 'CRAG', :location => { :country => 'USA' }
+    ThreetapsClient.search :source => 'CRAIG', :location => { :country => 'USA' }
 
 Use Polling API:
 
@@ -35,6 +35,7 @@ Use Polling API:
     ThreetapsClient.poll
     ThreetapsClient.poll(640587080)
     ThreetapsClient.poll('640587080')
+    ThreetapsClient.poll :anchor => '640587080', :source => 'CRAIG', :location => { :country => 'USA' }
 
 Use Reference API:
 
