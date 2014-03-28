@@ -64,7 +64,7 @@ module ThreetapsClient
   def request(url, params={})
     params   = default_params.merge params.flatten
     response = RestClient.get url, :params => params, :accept => :json, :accept_charset => 'utf-8'
-    response.decode_json
+    JSON.parse(response)
   end
 
   def log=(io)
