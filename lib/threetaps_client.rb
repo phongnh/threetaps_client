@@ -20,7 +20,7 @@ module ThreetapsClient
   LOCATIONS_URL       = "#{REFERENCE_END_POINT}/locations"
   LOCATION_LOOKUP_URL = "#{REFERENCE_END_POINT}/locations/lookup"
 
-  attr_accessor :api_key
+  attr_accessor :api_key, :raw_data
 
   def search(criteria={})
     request SEARCH_END_POINT, criteria
@@ -65,6 +65,10 @@ module ThreetapsClient
     params   = default_params.merge params.flatten
     response = RestClient.get url, :params => params, :accept => :json, :accept_charset => 'utf-8'
     JSON.parse(response)
+  end
+
+  def raw_data?
+    !!raw_data
   end
 
   def log=(io)
