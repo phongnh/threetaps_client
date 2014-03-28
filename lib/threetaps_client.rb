@@ -57,17 +57,8 @@ module ThreetapsClient
     request LOCATION_LOOKUP_URL, :code => code
   end
 
-  def retvals
-    %w[
-      id account_id source category category_group
-      location external_id external_url heading body
-      timestamp expires language price currency
-      images annotations status immortal deleted
-    ].join(',')
-  end
-
   def default_params
-    { :auth_token => api_key, :retvals => retvals }
+    { :auth_token => api_key }
   end
 
   def request(url, params={})
