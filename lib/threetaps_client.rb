@@ -49,8 +49,11 @@ module ThreetapsClient
     request CATEGORIES_URL
   end
 
-  def locations(level='country')
-    request LOCATIONS_URL, :level => level
+  def locations(*args)
+    options = args.extract_options!
+    level   = args.first || options[:level] || args.first || 'country'
+    options.merge! :level => level
+    request LOCATIONS_URL, options
   end
 
   def lookup_location(code)
